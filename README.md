@@ -6,6 +6,13 @@ Requirements
     PHP5.3.3+
     PHP5-Curl
 
+Multi CURL vs Standard CURL
+---------------------
+
+In this example there is 2 Requests and each file has a sleep(10); within it. If your doing more then 1 Curl then you should use multi
+[![](http://img.image-storage.co.uk/1679631004/4e3d04230a29d.png)](http://img.image-storage.co.uk/1679631004/4e3d04230a29d.png)
+
+
 Configurations
 ---------------------
     // Standard
@@ -55,9 +62,3 @@ Usage Multi CURL
 	$multi->exec(function(Curl $curl){
 		echo 'Http Code: ' . $curl->getInfo(CURLINFO_HTTP_CODE) . "\n";
 	});
-	
-Multi CURL vs Standard CURL
----------------------
-
-In this example there is 2 Requests and each file has a sleep(10); within it
-[![](http://img.image-storage.co.uk/1679631004/4e3d04230a29d.png)](http://img.image-storage.co.uk/1679631004/4e3d04230a29d.png)
