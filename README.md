@@ -1,6 +1,11 @@
 Curl, PHP 5.3.3+
 =============
 
+Requirements
+---------------------
+    PHP5.3.3+
+    PHP5-Curl
+
 Configurations
 ---------------------
     // Standard
