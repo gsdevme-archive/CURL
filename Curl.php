@@ -13,15 +13,15 @@
         public function __construct($multi=false, &$curl=null)
         {
             if (function_exists('curl_init')) {
-				if ($curl === null){
-					if ($multi) {
-						$this->_curl = @curl_multi_init();
-					} else {
-						$this->_curl = @curl_init();
-					}
-				}else{
-					$this->_curl = $curl;
-				}
+                if ($curl === null){
+                    if ($multi) {
+                        $this->_curl = @curl_multi_init();
+                    } else {
+                        $this->_curl = @curl_init();
+                    }
+                }else{
+                    $this->_curl = $curl;
+                }
 
                 if (is_resource($this->_curl)) {
                     $this->_isMulti = ( bool ) $multi;
@@ -37,10 +37,12 @@
          */
         public function __destruct()
         {
-            if ($this->_isMulti) {
-                curl_multi_close($this->_curl);
-            } else {
-                curl_close($this->_curl);
+            if(is_resource($this->_curl)){
+                if ($this->_isMulti) {
+                    @curl_multi_close($this->_curl);
+                } else {
+                    @curl_close($this->_curl);
+                }               
             }
         }
 
@@ -91,7 +93,7 @@
         /**
          * Sets multiple values for Curl
          * @param array $value
-         * @return bool		
+         * @return bool     
          */
         private function _setOptArray(array $value)
         {
@@ -121,12 +123,12 @@
                 $status = curl_multi_exec($this->_curl, $running);                
                 
                 if(($callback !== false) && (curl_multi_select($this->_curl) != -1)){
-					$info = curl_multi_info_read($this->_curl);
-					
-					if(is_array($info)){
-						$callback(new self(false, $info['handle']));
-					}					
-				}                
+                    $info = curl_multi_info_read($this->_curl);
+                    
+                    if(is_array($info)){
+                        $callback(new self(false, $info['handle']));
+                    }                   
+                }                
             } while ($status === CURLM_CALL_MULTI_PERFORM || $running > 0);
         }
 
@@ -190,11 +192,11 @@
          */
         public function getInfo($opt=null)
         {
-			if($opt !== null){
-				return curl_getinfo($this->_curl, $opt);
-			}
-			
-			return ( array ) curl_getinfo($this->_curl);            
+            if($opt !== null){
+                return curl_getinfo($this->_curl, $opt);
+            }
+            
+            return ( array ) curl_getinfo($this->_curl);            
         }
 
         /**
