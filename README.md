@@ -48,7 +48,16 @@ Usage Multi CURL
     $multi->addHandle($curlTwo);
     $multi->addHandle($curlThree);
 
-    // Simultaneously CURL all CURLs
-    $multi->exec();
+	// Simultaneously CURL all CURLs
+	$multi->exec();
+	
+	// You can also send a callback which will be processed upon result of each Curl	
+	$multi->exec(function(Curl $curl){
+		echo 'Http Code: ' . $curl->getInfo(CURLINFO_HTTP_CODE) . "\n";
+	});
+	
+Multi CURL vs Standard CURL
+---------------------
 
-    $dataTwo = $multi->getContent($curlTwo);
+In this example there is 2 Requests and each file has a sleep(10); within it
+[![](http://img.image-storage.co.uk/1679631004/4e3d04230a29d.png)](http://img.image-storage.co.uk/1679631004/4e3d04230a29d.png)
