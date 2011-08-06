@@ -8,15 +8,20 @@
         /**
          * Constructor, creates a new CURL resource, with option to pass opts
          * @param bool $mutli
+         * @param resource $curl=null
          */
-        public function __construct($multi=false)
+        public function __construct($multi=false, &$curl=null)
         {
             if (function_exists('curl_init')) {
-                if ($multi) {
-                    $this->_curl = @curl_multi_init();
-                } else {
-                    $this->_curl = @curl_init();
-                }
+				if ($curl === null){
+					if ($multi) {
+						$this->_curl = @curl_multi_init();
+					} else {
+						$this->_curl = @curl_init();
+					}
+				}else{
+					$this->_curl = $curl;
+				}
 
                 if (is_resource($this->_curl)) {
                     $this->_isMulti = ( bool ) $multi;
@@ -95,9 +100,10 @@
 
         /**
          * Executes the curret resource
+         * @param closure $callback=false
          * @return mixed
          */
-        public function exec()
+        public function exec($callback=false)
         {
             if (!$this->_isMulti) {
                 $r = curl_exec($this->_curl);
@@ -112,8 +118,16 @@
             $running = null;
 
             do {
-                curl_multi_exec($this->_curl, $running);
-            } while ($running > 0);
+                $status = curl_multi_exec($this->_curl, $running);                
+                
+                if(($callback !== false) && (curl_multi_select($this->_curl) != -1)){
+					$info = curl_multi_info_read($this->_curl);
+					
+					if(is_array($info)){
+						$callback(new self(false, $info['handle']));
+					}					
+				}                
+            } while ($status === CURLM_CALL_MULTI_PERFORM || $running > 0);
         }
 
         /**
@@ -174,9 +188,13 @@
          * Full list of options here 
          * http://www.php.net/manual/en/function.curl-getinfo.php
          */
-        public function getInfo($opt=0)
+        public function getInfo($opt=null)
         {
-            return curl_getinfo($this->_curl, $opt);
+			if($opt !== null){
+				return curl_getinfo($this->_curl, $opt);
+			}
+			
+			return ( array ) curl_getinfo($this->_curl);            
         }
 
         /**
