@@ -120,16 +120,20 @@
             $running = null;
 
             do {
-                $status = curl_multi_exec($this->_curl, $running);                
-                
-                if(($callback !== false) && (curl_multi_select($this->_curl) != -1)){
-                    $info = curl_multi_info_read($this->_curl);
-                    
-                    if(is_array($info)){
-                        $callback(new self(false, $info['handle']));
-                    }                   
-                }                
-            } while ($status === CURLM_CALL_MULTI_PERFORM || $running > 0);
+                $status = curl_multi_exec($this->_curl, $running);   
+            } while ($status == CURLM_CALL_MULTI_PERFORM);
+            
+            while($running > 0 && $status == CURLM_OK){
+                if(curl_multi_select($this->_curl)){
+                    do {
+                        $status = curl_multi_exec($this->_curl, $running);
+                        
+                        if(($callback !== null) && (($info = curl_multi_info_read($this->_curl)) !== false)){
+                            $callback(new self(false, $info['handle']));                        
+                        }                        
+                    } while ($status == CURLM_CALL_MULTI_PERFORM);                  
+                }                  
+            }
         }
 
         /**
@@ -165,13 +169,9 @@
          * @param Curl $curl
          * @return bool
          */
-        public function getContent(Curl &$curl)
+        public function getContent()
         {
-            if ($this->_isMulti) {
-                return curl_multi_getcontent($curl->getCurl());
-            }
-
-            throw new Exception('Your using a Multi method yet you have defined a standard CURL, you should use $c = new Curl(true); for a Multi curl.');
+            return curl_multi_getcontent($this->_curl);
         }
 
         /**
