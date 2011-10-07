@@ -17,4 +17,8 @@
     $myCurlObject = new Curl;
     $myCurlObject->CURLOPT_URL = 'http://google.com';
     
-    echo '<pre>' . print_r($myCurlObject->CURLOPT_URL, 1) . '</pre>';
+    $clone = clone $myCurlObject;
+    
+    echo '<pre>' . print_r($myCurlObject, 1) . '</pre>';
+    
+    unset($myCurlObject);
