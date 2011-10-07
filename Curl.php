@@ -39,13 +39,19 @@
             }
         }
 
+        /**
+         * @return resource 
+         */
         public function __clone()
         {
-            
+            return curl_copy_handle($this->_curl);
         }
 
         /**
          * Used to set the CURL constants
+         * @param constant name
+         * @param string value
+         * @return bool
          */
         public function __set($name, $value)
         {
