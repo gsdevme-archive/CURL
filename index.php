@@ -1,4 +1,6 @@
 <?php
+    // Assign to Global space
+    use Curl\Curl as Curl;    
 
     #################################################################
     ## Simple Autoloader ############################################
@@ -15,10 +17,14 @@
     #################################################################
 
     $myCurlObject = new Curl;
-    $myCurlObject->CURLOPT_URL = 'http://google.com';
-    
-    $clone = clone $myCurlObject;
-    
-    echo '<pre>' . print_r($myCurlObject, 1) . '</pre>';
-    
-    unset($myCurlObject);
+    $myCurlObject->CURLOPT_URL = 'http://www.whatismyip.org/';
+    $myCurlObject->CURLOPT_RETURNTRANSFER = true;
+
+    $myCurlObject->exec(function($return, stdClass $info) {
+            if (($http = $info->http_code) == '200') {
+                echo $return;
+                return;
+            }
+
+            echo 'No HTTP 200, it returned ' . $http . ' Code';
+        });
