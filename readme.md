@@ -1,4 +1,9 @@
+Curl, PHP 5.3.3+
+=============
+
 Curl, use 1
+-------
+
     $myCurlObject = new Curl;
     $myCurlObject->CURLOPT_URL = 'http://whatismyip.org';
     $myCurlObject->CURLOPT_RETURNTRANSFER = true;
@@ -8,6 +13,8 @@ Curl, use 1
     echo '<pre>' . print_r($data, 1) . '</pre>' . "\n\n";
 
 Curl, use 2
+-------
+
     $myCurlObject = new Curl;
     $myCurlObject->CURLOPT_URL = 'http://whatismyip.org';
     $myCurlObject->CURLOPT_RETURNTRANSFER = true;
@@ -17,6 +24,7 @@ Curl, use 2
     });   
 
 Multi Curl, use 1
+-------
 
     $myCurlObject = new Curl;
     $myCurlObject->CURLOPT_URL = 'http://whatismyip.org';
@@ -38,6 +46,7 @@ Multi Curl, use 1
     }
 
 Multi Curl, use 2
+-------
 
     $myCurlObject = new Curl;
     $myCurlObject->CURLOPT_URL = 'http://whatismyip.org';
