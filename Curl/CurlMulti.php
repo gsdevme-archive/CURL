@@ -13,7 +13,7 @@ use \Closure as Closure;
         {
 
             /**
-             * Override psuh() to allow for input for a callback
+             * Override push() to allow for input for a callback
              * @param Curl $curl
              * @param closure $callback 
              */
