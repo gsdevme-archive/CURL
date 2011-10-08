@@ -26,7 +26,7 @@
                 return;
             }
 
-            throw new CurlException('No CURL found on this machine. Make sure the PHP5-CURL extension is installed.', null, null);
+            throw new CurlException('No CURL found on this machine. Make sure the PHP5-CURL extension is installed' . ', ' . $this->_errorMessage(), null, null);
         }
 
         /**
@@ -56,10 +56,10 @@
         public function __set($name, $value)
         {
             if (defined($name)) {
-                return curl_setopt($this->_curl, constant($name), $value);
+                return ( bool ) curl_setopt($this->_curl, constant($name), $value);
             }
 
-            throw new CurlException('Failed to find CURL constant ' . $name, null, null);
+            throw new CurlException('Failed to find CURL constant ' . $name . ', ' . $this->_errorMessage(), null, null);
         }
 
         /**
@@ -73,7 +73,33 @@
                 return curl_getinfo($this->_curl, $option);
             }
 
-            return curl_getinfo($this->_curl);
+            return ( object ) curl_getinfo($this->_curl);
+        }
+
+        /**
+         *
+         * @return variant 
+         */
+        public function exec($callback=null)
+        {
+            if (($return = curl_exec($this->_curl)) !== false) {
+                if ($callback instanceof Closure) {
+                    return $callback($return, $this->getInfo());
+                }
+
+                return $return;
+            }
+
+            return ( bool ) false;
+        }
+
+        /**
+         *
+         * @return string 
+         */
+        private function _errorMessage()
+        {
+            return ( string ) curl_errno($this->_curl) . ': ' . curl_error($this->_curl);
         }
 
     }
