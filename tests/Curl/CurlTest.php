@@ -89,5 +89,13 @@ use Curl\Curl as Curl;
                 }
             }
         }
+        
+        public function testGetResource(){
+            $resource = $this->_curl->getResource();
+            
+            if(!is_resource($resource)){
+                $this->fail('Failed to get resource');
+            }
+        }
 
     }
