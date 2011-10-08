@@ -1,8 +1,9 @@
 <?php
-    // Assign to Global space
-    use Curl\Curl as Curl;    
 
-    #################################################################
+    // Assign to Global space
+    use Curl\Curl as Curl;
+
+#################################################################
     ## Simple Autoloader ############################################
     #################################################################
     $root = realpath(dirname(__FILE__)) . '/';
@@ -17,14 +18,23 @@
     #################################################################
 
     $myCurlObject = new Curl;
-    $myCurlObject->CURLOPT_URL = 'http://www.whatismyip.org/';
+    $myCurlObject->CURLOPT_URL = 'http://whatismyip.org';
     $myCurlObject->CURLOPT_RETURNTRANSFER = true;
 
-    $myCurlObject->exec(function($return, stdClass $info) {
-            if (($http = $info->http_code) == '200') {
-                echo $return;
-                return;
-            }
+    $mySecondCurl = new Curl;
+    $mySecondCurl->CURLOPT_URL = 'http://www.google.com/';
+    $mySecondCurl->CURLOPT_RETURNTRANSFER = true;
 
-            echo 'No HTTP 200, it returned ' . $http . ' Code';
-        });
+    $multi = new \Curl\CurlMulti;
+    
+    $multi->push($myCurlObject, function($return, $info) {
+            echo '<pre>' . print_r($info, 1) . '</pre>';
+        }
+    );
+
+    $multi->push($mySecondCurl, function($return, $info) {
+            echo '<pre>' . print_r($info, 1) . '</pre>';
+        }
+    );
+
+    $multi->exec();
