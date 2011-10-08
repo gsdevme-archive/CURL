@@ -79,10 +79,10 @@
              *
              * @return variant 
              */
-            public function exec($callback=null)
+            public function exec(Closure $callback=null)
             {
                 if (($return = curl_exec($this->_curl)) !== false) {
-                    if ($callback instanceof Closure) {
+                    if ($callback !== null) {
                         return $callback($return, $this->getInfo());
                     }
 
@@ -90,6 +90,15 @@
                 }
 
                 return ( bool ) false;
+            }
+
+            /**
+             * Returns the resource via reference
+             * @return resource
+             */
+            public function &getResource()
+            {
+                return $this->_curl;
             }
 
             /**
