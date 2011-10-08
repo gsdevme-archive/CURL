@@ -72,7 +72,7 @@
             </table>
           </td>
           <td class="coverPerHi">100.00%</td>
-          <td class="coverNumHi">7 / 7</td>
+          <td class="coverNumHi">8 / 8</td>
           <td class="crap"><acronym title="Change Risk Anti-Patterns (CRAP) Index">CRAP</acronym></td>
           <td class="coverBar" align="center" width="100">
             <table border="0" cellspacing="0" cellpadding="1">
@@ -82,7 +82,7 @@
             </table>
           </td>
           <td class="coverPerHi">100.00%</td>
-          <td class="coverNumHi">29 / 29</td>
+          <td class="coverNumHi">30 / 30</td>
         </tr>
 
         <tr>
@@ -107,7 +107,7 @@
             </table>
           </td>
           <td class="coverPerHi">100.00%</td>
-          <td class="coverNumHi">7 / 7</td>
+          <td class="coverNumHi">8 / 8</td>
           <td class="crap"></td>
           <td class="coverBar" align="center" width="100">
             <table border="0" cellspacing="0" cellpadding="1">
@@ -117,7 +117,7 @@
             </table>
           </td>
           <td class="coverPerHi">100.00%</td>
-          <td class="coverNumHi">29 / 29</td>
+          <td class="coverNumHi">30 / 30</td>
         </tr>
 
         <tr>
@@ -259,7 +259,30 @@
         </tr>
 
         <tr>
-          <td class="coverFile" colspan="4">&nbsp;<a href="#99">_errorMessage()</a></td>
+          <td class="coverFile" colspan="4">&nbsp;<a href="#99">&amp;getResource()</a></td>
+          <td class="coverBar" align="center" width="100">
+            <table border="0" cellspacing="0" cellpadding="1">
+              <tr>
+                <td class="coverBarOutline"><img src="chameleon.png" width="100" height="10" alt="100.00%"><img src="snow.png" width="0" height="10" alt="100.00%"></td>
+              </tr>
+            </table>
+          </td>
+          <td class="coverPerHi">100.00%</td>
+          <td class="coverNumHi">1 / 1</td>
+          <td class="crap">1</td>
+          <td class="coverBar" align="center" width="100">
+            <table border="0" cellspacing="0" cellpadding="1">
+              <tr>
+                <td class="coverBarOutline"><img src="chameleon.png" width="100" height="10" alt="100.00%"><img src="snow.png" width="0" height="10" alt="100.00%"></td>
+              </tr>
+            </table>
+          </td>
+          <td class="coverPerHi">100.00%</td>
+          <td class="coverNumHi">1 / 1</td>
+        </tr>
+
+        <tr>
+          <td class="coverFile" colspan="4">&nbsp;<a href="#108">_errorMessage()</a></td>
           <td class="coverBar" align="center" width="100">
             <table border="0" cellspacing="0" cellpadding="1">
               <tr>
@@ -316,13 +339,13 @@
 <span class="lineNum" id="container20"><a name="20"></a><a href="#20" id="line20">      20</a> </span>                :              */                                                                                                              
 <span class="lineNum" id="container21"><a name="21"></a><a href="#21" id="line21">      21</a> </span>                :             public function __construct(&amp;$curl=null)                                                                         
 <span class="lineNum" id="container22"><a name="22"></a><a href="#22" id="line22">      22</a> </span>                :             {                                                                                                                
-<span class="lineNum" id="container23"><a name="23"></a><a href="#23" id="line23">      23</a> </span><span class="lineCov">              9 :                 if ($curl !== null) {                                                                                        </span>
+<span class="lineNum" id="container23"><a name="23"></a><a href="#23" id="line23">      23</a> </span><span class="lineCov">             10 :                 if ($curl !== null) {                                                                                        </span>
 <span class="lineNum" id="container24"><a name="24"></a><a href="#24" id="line24">      24</a> </span><span class="lineCov">              1 :                     $this-&gt;_curl = $curl;                                                                                    </span>
 <span class="lineNum" id="container25"><a name="25"></a><a href="#25" id="line25">      25</a> </span><span class="lineCov">              1 :                     return;                                                                                                  </span>
 <span class="lineNum" id="container26"><a name="26"></a><a href="#26" id="line26">      26</a> </span><span class="lineDeadCode">                :                 }                                                                                                            </span>
 <span class="lineNum" id="container27"><a name="27"></a><a href="#27" id="line27">      27</a> </span>                :                                                                                                                              
-<span class="lineNum" id="container28"><a name="28"></a><a href="#28" id="line28">      28</a> </span><span class="lineCov">              9 :                 $this-&gt;_curl = curl_init();                                                                                  </span>
-<span class="lineNum" id="container29"><a name="29"></a><a href="#29" id="line29">      29</a> </span><span class="lineCov">              9 :             }                                                                                                                </span>
+<span class="lineNum" id="container28"><a name="28"></a><a href="#28" id="line28">      28</a> </span><span class="lineCov">             10 :                 $this-&gt;_curl = curl_init();                                                                                  </span>
+<span class="lineNum" id="container29"><a name="29"></a><a href="#29" id="line29">      29</a> </span><span class="lineCov">             10 :             }                                                                                                                </span>
 <span class="lineNum" id="container30"><a name="30"></a><a href="#30" id="line30">      30</a> </span>                :                                                                                                                              
 <span class="lineNum" id="container31"><a name="31"></a><a href="#31" id="line31">      31</a> </span>                :             /**                                                                                                              
 <span class="lineNum" id="container32"><a name="32"></a><a href="#32" id="line32">      32</a> </span>                :              * Since resources are not cleaned via the GC its important we handle it !                                       
@@ -389,16 +412,25 @@
 <span class="lineNum" id="container93"><a name="93"></a><a href="#93" id="line93">      93</a> </span><span class="lineDeadCode">                :             }                                                                                                                </span>
 <span class="lineNum" id="container94"><a name="94"></a><a href="#94" id="line94">      94</a> </span>                :                                                                                                                              
 <span class="lineNum" id="container95"><a name="95"></a><a href="#95" id="line95">      95</a> </span>                :             /**                                                                                                              
-<span class="lineNum" id="container96"><a name="96"></a><a href="#96" id="line96">      96</a> </span>                :              *                                                                                                               
-<span class="lineNum" id="container97"><a name="97"></a><a href="#97" id="line97">      97</a> </span>                :              * @return string                                                                                                
+<span class="lineNum" id="container96"><a name="96"></a><a href="#96" id="line96">      96</a> </span>                :              * Returns the resource via reference                                                                            
+<span class="lineNum" id="container97"><a name="97"></a><a href="#97" id="line97">      97</a> </span>                :              * @return resource                                                                                              
 <span class="lineNum" id="container98"><a name="98"></a><a href="#98" id="line98">      98</a> </span>                :              */                                                                                                              
-<span class="lineNum" id="container99"><a name="99"></a><a href="#99" id="line99">      99</a> </span>                :             private function _errorMessage()                                                                                 
+<span class="lineNum" id="container99"><a name="99"></a><a href="#99" id="line99">      99</a> </span>                :             public function &amp;getResource()                                                                                   
 <span class="lineNum" id="container100"><a name="100"></a><a href="#100" id="line100">     100</a> </span>                :             {                                                                                                                
-<span class="lineNum" id="container101"><a name="101"></a><a href="#101" id="line101">     101</a> </span><span class="lineCov">              1 :                 return ( string ) curl_errno($this-&gt;_curl) . ': ' . curl_error($this-&gt;_curl);                                </span>
+<span class="lineNum" id="container101"><a name="101"></a><a href="#101" id="line101">     101</a> </span><span class="lineCov">              1 :                 return $this-&gt;_curl;                                                                                         </span>
 <span class="lineNum" id="container102"><a name="102"></a><a href="#102" id="line102">     102</a> </span><span class="lineDeadCode">                :             }                                                                                                                </span>
 <span class="lineNum" id="container103"><a name="103"></a><a href="#103" id="line103">     103</a> </span>                :                                                                                                                              
-<span class="lineNum" id="container104"><a name="104"></a><a href="#104" id="line104">     104</a> </span>                :         }                                                                                                                    
-<span class="lineNum" id="container105"><a name="105"></a><a href="#105" id="line105">     105</a> </span>                :                                                                                                                              
+<span class="lineNum" id="container104"><a name="104"></a><a href="#104" id="line104">     104</a> </span>                :             /**                                                                                                              
+<span class="lineNum" id="container105"><a name="105"></a><a href="#105" id="line105">     105</a> </span>                :              *                                                                                                               
+<span class="lineNum" id="container106"><a name="106"></a><a href="#106" id="line106">     106</a> </span>                :              * @return string                                                                                                
+<span class="lineNum" id="container107"><a name="107"></a><a href="#107" id="line107">     107</a> </span>                :              */                                                                                                              
+<span class="lineNum" id="container108"><a name="108"></a><a href="#108" id="line108">     108</a> </span>                :             private function _errorMessage()                                                                                 
+<span class="lineNum" id="container109"><a name="109"></a><a href="#109" id="line109">     109</a> </span>                :             {                                                                                                                
+<span class="lineNum" id="container110"><a name="110"></a><a href="#110" id="line110">     110</a> </span><span class="lineCov">              1 :                 return ( string ) curl_errno($this-&gt;_curl) . ': ' . curl_error($this-&gt;_curl);                                </span>
+<span class="lineNum" id="container111"><a name="111"></a><a href="#111" id="line111">     111</a> </span><span class="lineDeadCode">                :             }                                                                                                                </span>
+<span class="lineNum" id="container112"><a name="112"></a><a href="#112" id="line112">     112</a> </span>                :                                                                                                                              
+<span class="lineNum" id="container113"><a name="113"></a><a href="#113" id="line113">     113</a> </span>                :         }                                                                                                                    
+<span class="lineNum" id="container114"><a name="114"></a><a href="#114" id="line114">     114</a> </span>                :                                                                                                                              
 
 </pre>
         </td>
@@ -407,7 +439,7 @@
 
     <table width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr><td class="ruler"><img src="glass.png" width="3" height="3" alt=""></td></tr>
-      <tr><td class="versionInfo">Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage @package_version@</a> using <a href="http://www.php.net/" target="_top">PHP 5.3.6</a> and PHPUnit @package_version@ at Sat Oct 8 16:44:31 BST 2011.</td></tr>
+      <tr><td class="versionInfo">Generated by <a href="http://github.com/sebastianbergmann/php-code-coverage" target="_top">PHP_CodeCoverage @package_version@</a> using <a href="http://www.php.net/" target="_top">PHP 5.3.6</a> and PHPUnit @package_version@ at Sat Oct 8 18:23:53 BST 2011.</td></tr>
     </table>
 
     <br />
@@ -423,8 +455,8 @@
           "footer": ""
         },
         "panel23": {
-          "header": "9 tests cover line 23",
-          "body": "<ul><li class=\"testPassed\">CurlTest::testInstance</li><li class=\"testPassed\">CurlTest::testInstancePass</li><li class=\"testPassed\">CurlTest::testClone</li><li class=\"testPassed\">CurlTest::testSetConstant</li><li class=\"testPassed\">CurlTest::testCatchInvalidConstant</li><li class=\"testPassed\">CurlTest::testFailedExec</li><li class=\"testPassed\">CurlTest::testExec</li><li class=\"testPassed\">CurlTest::testExecCallback</li><li class=\"testPassed\">CurlTest::testExecInfo</li></ul>",
+          "header": "10 tests cover line 23",
+          "body": "<ul><li class=\"testPassed\">CurlTest::testInstance</li><li class=\"testPassed\">CurlTest::testInstancePass</li><li class=\"testPassed\">CurlTest::testClone</li><li class=\"testPassed\">CurlTest::testSetConstant</li><li class=\"testPassed\">CurlTest::testCatchInvalidConstant</li><li class=\"testPassed\">CurlTest::testFailedExec</li><li class=\"testPassed\">CurlTest::testExec</li><li class=\"testPassed\">CurlTest::testExecCallback</li><li class=\"testPassed\">CurlTest::testExecInfo</li><li class=\"testPassed\">CurlTest::testGetResource</li></ul>",
           "footer": ""
         },
         "panel24": {
@@ -438,13 +470,13 @@
           "footer": ""
         },
         "panel28": {
-          "header": "9 tests cover line 28",
-          "body": "<ul><li class=\"testPassed\">CurlTest::testInstance</li><li class=\"testPassed\">CurlTest::testInstancePass</li><li class=\"testPassed\">CurlTest::testClone</li><li class=\"testPassed\">CurlTest::testSetConstant</li><li class=\"testPassed\">CurlTest::testCatchInvalidConstant</li><li class=\"testPassed\">CurlTest::testFailedExec</li><li class=\"testPassed\">CurlTest::testExec</li><li class=\"testPassed\">CurlTest::testExecCallback</li><li class=\"testPassed\">CurlTest::testExecInfo</li></ul>",
+          "header": "10 tests cover line 28",
+          "body": "<ul><li class=\"testPassed\">CurlTest::testInstance</li><li class=\"testPassed\">CurlTest::testInstancePass</li><li class=\"testPassed\">CurlTest::testClone</li><li class=\"testPassed\">CurlTest::testSetConstant</li><li class=\"testPassed\">CurlTest::testCatchInvalidConstant</li><li class=\"testPassed\">CurlTest::testFailedExec</li><li class=\"testPassed\">CurlTest::testExec</li><li class=\"testPassed\">CurlTest::testExecCallback</li><li class=\"testPassed\">CurlTest::testExecInfo</li><li class=\"testPassed\">CurlTest::testGetResource</li></ul>",
           "footer": ""
         },
         "panel29": {
-          "header": "9 tests cover line 29",
-          "body": "<ul><li class=\"testPassed\">CurlTest::testInstance</li><li class=\"testPassed\">CurlTest::testInstancePass</li><li class=\"testPassed\">CurlTest::testClone</li><li class=\"testPassed\">CurlTest::testSetConstant</li><li class=\"testPassed\">CurlTest::testCatchInvalidConstant</li><li class=\"testPassed\">CurlTest::testFailedExec</li><li class=\"testPassed\">CurlTest::testExec</li><li class=\"testPassed\">CurlTest::testExecCallback</li><li class=\"testPassed\">CurlTest::testExecInfo</li></ul>",
+          "header": "10 tests cover line 29",
+          "body": "<ul><li class=\"testPassed\">CurlTest::testInstance</li><li class=\"testPassed\">CurlTest::testInstancePass</li><li class=\"testPassed\">CurlTest::testClone</li><li class=\"testPassed\">CurlTest::testSetConstant</li><li class=\"testPassed\">CurlTest::testCatchInvalidConstant</li><li class=\"testPassed\">CurlTest::testFailedExec</li><li class=\"testPassed\">CurlTest::testExec</li><li class=\"testPassed\">CurlTest::testExecCallback</li><li class=\"testPassed\">CurlTest::testExecInfo</li><li class=\"testPassed\">CurlTest::testGetResource</li></ul>",
           "footer": ""
         },
         "panel34": {
@@ -559,6 +591,11 @@
         },
         "panel101": {
           "header": "1 test covers line 101",
+          "body": "<ul><li class=\"testPassed\">CurlTest::testGetResource</li></ul>",
+          "footer": ""
+        },
+        "panel110": {
+          "header": "1 test covers line 110",
           "body": "<ul><li class=\"testPassed\">CurlTest::testCatchInvalidConstant</li></ul>",
           "footer": ""
         },
